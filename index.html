@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Elycius rem — video editing, Minecraft builds, photography, drawing, writing and humanist engagement.">
+  <meta name="theme-color" content="#101914">
+  <title>Elycius rem</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:wght@400;500;600;700&family=Play:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-noise" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand brand--simple" href="#top" aria-label="Elycius rem — back to top">
+      <span class="brand-dot" aria-hidden="true"></span>
+      <span class="brand-text">Elycius rem</span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="#about">About</a>
+      <a href="#editing">Editing</a>
+      <a href="#minecraft">Minecraft</a>
+      <a href="#humanists">Humanists</a>
+      <a href="#gallery">Gallery</a>
+      <a href="blog.html">Blog</a>
+    </nav>
+
+    <button class="menu-button" type="button" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <nav class="mobile-nav" aria-label="Mobile navigation">
+    <a href="#about">About</a>
+    <a href="#editing">Editing</a>
+    <a href="#minecraft">Minecraft</a>
+    <a href="#humanists">Humanists</a>
+    <a href="#gallery">Gallery</a>
+    <a href="blog.html">Blog</a>
+  </nav>
+
+  <main id="top">
+    <section class="hero section-shell">
+      <div class="hero-copy">
+        <p class="eyebrow">video / building / photography / ideas</p>
+        <h1>Elycius <span>rem</span></h1>
+        <p class="hero-line">
+          A personal space for the things I make, explore and care about.
+        </p>
+        <a class="text-link" href="#about">Explore my work <span aria-hidden="true">↓</span></a>
+      </div>
+
+      <div class="hero-orbit" aria-hidden="true">
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+        <div class="orbit orbit-three"></div>
+        <div class="orbit-core orbit-core--profile">
+          <img src="assets/profile/elycius-profile.png" alt="">
+        </div>
+        <span class="orbit-label label-one">THINK</span>
+        <span class="orbit-label label-two">SLEEP</span>
+        <span class="orbit-label label-three">EDIT</span>
+        <span class="orbit-label label-four">CREATE</span>
+      </div>
+    </section>
+
+    <section id="about" class="section-shell section-block">
+      <div class="section-heading">
+        <p class="section-index">01</p>
+        <div>
+          <p class="eyebrow">About me</p>
+          <h2>Projects, interests<br>and things worth keeping.</h2>
+        </div>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-copy panel">
+          <p class="lead">
+            Hi, I'm Elycius rem. I like learning and acquiring new skills. I'm interested in video editing, Minecraft, STEM, topography, vexillology, art and linguistics.
+          </p>
+          <p>
+            I speak Deutsch, English and русский fluently and I'm learning Svenska, Español, 中文 and suomi.
+          </p>
+          <p class="muted">
+            This website is a home for personal projects. Some things here are finished. Others are works in progress or simply ideas
+            I still want to develop.
+          </p>
+        </div>
+
+        <div class="linktree" aria-label="Social links">
+          <a class="social-button" href="https://www.youtube.com/@elyciusrem" target="_blank" rel="noreferrer">
+            <span class="social-number">01</span><span>YouTube</span><span class="social-arrow">↗</span>
+          </a>
+          <a class="social-button" href="https://ytjobs.co/talent/profile/616488" target="_blank" rel="noreferrer">
+            <span class="social-number">02</span><span>YT Jobs</span><span class="social-arrow">↗</span>
+          </a>
+          <a class="social-button" href="https://github.com/Elycius-rem" target="_blank" rel="noreferrer">
+            <span class="social-number">03</span><span>GitHub</span><span class="social-arrow">↗</span>
+          </a>
+          <button class="social-button copy-discord" type="button" data-copy="@elyciusrem">
+            <span class="social-number">04</span><span>Discord <small>@elyciusrem</small></span><span class="social-arrow copy-state">copy</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="editing" class="section-shell section-block">
+      <div class="section-heading">
+        <p class="section-index">02</p>
+        <div>
+          <p class="eyebrow">Video editing</p>
+          <h2>Video editing.</h2>
+        </div>
+      </div>
+
+      <div class="section-note">
+        <p>
+          Long-form videos, narrative edits, podcasts and short-form work I have edited.
+          Click a preview to open the video on YouTube.
+        </p>
+      </div>
+
+      <div id="video-grid" class="video-grid"></div>
+    </section>
+
+    <section id="minecraft" class="section-shell section-block">
+      <div class="section-heading">
+        <p class="section-index">03</p>
+        <div>
+          <p class="eyebrow">Minecraft</p>
+          <h2>Minecraft builds.</h2>
+        </div>
+      </div>
+
+      <div class="section-note">
+        <p>
+          A selection of builds I worked on over the years. Click any build for its description
+          and image gallery.
+        </p>
+      </div>
+
+      <div class="minecraft-group">
+        <div id="darkenya-context" class="team-context"></div>
+        <div id="darkenya-grid" class="minecraft-grid" aria-live="polite"></div>
+      </div>
+
+      <div class="minecraft-group minecraft-group--separate">
+        <div class="group-heading">
+          <p class="eyebrow">Independent work</p>
+          <h3>Other Minecraft builds</h3>
+        </div>
+        <div id="independent-grid" class="minecraft-grid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section id="humanists" class="section-shell section-block">
+      <div class="section-heading">
+        <p class="section-index">04</p>
+        <div>
+          <p class="eyebrow">Party of Humanists</p>
+          <h2>Roles & involvement.</h2>
+        </div>
+      </div>
+
+      <div class="humanists-intro">
+        <p>
+          My work in the German Party of Humanists included video production, team leadership,
+          social media and podcast development.
+        </p>
+      </div>
+
+      <div id="humanists-timeline" class="timeline"></div>
+    </section>
+
+    <section id="gallery" class="section-shell section-block">
+      <div class="section-heading">
+        <p class="section-index">05</p>
+        <div>
+          <p class="eyebrow">Gallery</p>
+          <h2>Photography &<br>drawn work.</h2>
+        </div>
+      </div>
+
+      <div class="gallery-toolbar">
+        <p>
+          One gallery, two distinct collections. I do not consent to my work being used for AI training.
+        </p>
+        <div class="gallery-tabs" role="tablist" aria-label="Gallery category">
+          <button class="gallery-tab is-active" type="button" data-gallery="photography">Photography</button>
+          <button class="gallery-tab" type="button" data-gallery="drawings">Drawn Art</button>
+        </div>
+      </div>
+
+      <div id="gallery-grid" class="gallery-grid" aria-live="polite"></div>
+
+      <div class="gallery-more-wrap">
+        <button id="gallery-more" class="gallery-more" type="button" hidden>See more</button>
+      </div>
+    </section>
+
+    <section id="blog-preview" class="section-shell section-block">
+      <div class="section-heading">
+        <p class="section-index">06</p>
+        <div>
+          <p class="eyebrow">Blog</p>
+          <h2>Things I want<br>to think about.</h2>
+        </div>
+      </div>
+
+      <div class="blog-intro">
+        <p>
+          A place for longer thoughts about projects, media, technology, politics, humanism,
+          games and whatever else becomes interesting enough to write down.
+        </p>
+        <a class="outline-link" href="blog.html">Open blog <span>↗</span></a>
+      </div>
+
+      <div id="home-blog-posts" class="post-grid"></div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer section-shell">
+    <p>Elycius rem <span>— personal archive</span></p>
+    <a href="#top">Back to top ↑</a>
+  </footer>
+
+  <dialog id="project-modal" class="project-modal">
+    <div class="modal-shell">
+      <button class="modal-close" type="button" aria-label="Close project">×</button>
+      <div class="modal-copy">
+        <p class="eyebrow modal-kicker">Minecraft project</p>
+        <h2 id="modal-title"></h2>
+        <p id="modal-years" class="modal-years"></p>
+        <p id="modal-description"></p>
+        <div id="modal-links" class="modal-links"></div>
+      </div>
+      <div class="project-viewer">
+        <button class="viewer-arrow viewer-prev" type="button" aria-label="Previous image">←</button>
+        <div class="viewer-frame">
+          <img id="modal-image" alt="">
+          <div id="modal-image-placeholder" class="image-placeholder">
+            <span>No project image yet</span>
+            <small>Add <code>01.jpg</code> to this project's folder.</small>
+          </div>
+        </div>
+        <button class="viewer-arrow viewer-next" type="button" aria-label="Next image">→</button>
+      </div>
+      <div class="viewer-footer">
+        <span id="viewer-counter">0 / 0</span>
+        <div id="viewer-dots" class="viewer-dots"></div>
+      </div>
+
+      <section id="modal-videos-section" class="modal-videos-section" hidden>
+        <div class="modal-subheading">
+          <p class="eyebrow">Project videos</p>
+          <h3>Video material</h3>
+        </div>
+        <div id="modal-videos" class="modal-videos"></div>
+      </section>
+    </div>
+  </dialog>
+
+  <dialog id="gallery-lightbox" class="gallery-lightbox">
+    <div class="gallery-lightbox-shell">
+      <div class="gallery-lightbox-topbar">
+        <div>
+          <span id="gallery-lightbox-category" class="eyebrow">Gallery</span>
+          <div id="gallery-lightbox-caption" class="gallery-lightbox-caption"></div>
+        </div>
+        <div class="gallery-lightbox-actions">
+          <button id="gallery-lightbox-zoom" class="lightbox-control" type="button" aria-label="Toggle image zoom">Zoom +</button>
+          <button id="gallery-lightbox-close" class="lightbox-control lightbox-close" type="button" aria-label="Close image viewer">×</button>
+        </div>
+      </div>
+
+      <div id="gallery-lightbox-stage" class="gallery-lightbox-stage">
+        <button id="gallery-lightbox-prev" class="gallery-lightbox-arrow gallery-lightbox-prev" type="button" aria-label="Previous image">←</button>
+        <div class="gallery-lightbox-image-wrap">
+          <div class="gallery-lightbox-canvas">
+            <img id="gallery-lightbox-image" alt="">
+          </div>
+        </div>
+        <button id="gallery-lightbox-next" class="gallery-lightbox-arrow gallery-lightbox-next" type="button" aria-label="Next image">→</button>
+      </div>
+
+      <div class="gallery-lightbox-footer">
+        <span id="gallery-lightbox-counter">1 / 1</span>
+        <span>← / → to navigate · click image to zoom</span>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="content.js"></script>
+  <script src="blog-posts.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

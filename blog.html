@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101914">
+  <title>Blog — Elycius rem</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:wght@400;500;600;700&family=Play:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="blog.css">
+</head>
+<body>
+  <div class="page-noise" aria-hidden="true"></div>
+  <header class="site-header is-scrolled">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">ER</span><span class="brand-text">Elycius rem</span>
+    </a>
+    <nav class="desktop-nav">
+      <a href="index.html">Portfolio</a>
+      <a href="blog.html" class="is-current">Blog</a>
+    </nav>
+  </header>
+
+  <main class="blog-page section-shell">
+    <div class="blog-hero">
+      <p class="eyebrow">Blog</p>
+      <h1>Notes, arguments<br>and rabbit holes.</h1>
+      <p>
+        Longer thoughts about projects, media, technology, politics, humanism, games
+        and whatever else seems worth writing down.
+      </p>
+    </div>
+
+    <div id="blog-list" class="blog-list"></div>
+  </main>
+
+  <footer class="site-footer section-shell">
+    <p>Elycius rem <span>— blog</span></p>
+    <a href="index.html">Portfolio ↗</a>
+  </footer>
+
+  <script src="blog-posts.js"></script>
+  <script src="blog.js"></script>
+</body>
+</html>
