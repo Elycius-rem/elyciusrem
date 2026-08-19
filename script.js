@@ -79,7 +79,7 @@ copyDiscord?.addEventListener("click", async () => {
 
 /* ---------- Image helpers ---------- */
 
-const extensions = ["jpg", "jpeg", "png", "webp"];
+const extensions = ["jpg", "jpeg", "png", "webp", "JPG", "JPEG", "PNG", "WEBP"];
 
 function padded(number) {
   return String(number).padStart(2, "0");
@@ -111,6 +111,22 @@ async function discoverNumberedImages(folder, maxImages = 20, prefix = "") {
   const checks = Array.from({ length: maxImages }, (_, index) =>
     findExistingImage(`${folder}/${prefix}${padded(index + 1)}`)
   );
+  const results = await Promise.all(checks);
+  return results.filter(Boolean);
+}
+
+/*
+  Gallery variant: preserve the actual file number.
+  This is important when a file is missing on the hosted site. Without the
+  number, filtering out a missing image shifts every title/medium after it.
+*/
+async function discoverNumberedGalleryImages(folder, maxImages = 20, prefix = "") {
+  const checks = Array.from({ length: maxImages }, async (_, index) => {
+    const number = index + 1;
+    const src = await findExistingImage(`${folder}/${prefix}${padded(number)}`);
+    return src ? { src, number } : null;
+  });
+
   const results = await Promise.all(checks);
   return results.filter(Boolean);
 }
@@ -595,15 +611,15 @@ let visibleGalleryCount = GALLERY_INITIAL_COUNT;
 let lightboxIndex = 0;
 let lightboxZoomed = false;
 
-function galleryMetaFor(type, index) {
-  const number = String(index + 1).padStart(2, "0");
+function galleryMetaFor(type, imageNumber) {
+  const number = String(imageNumber).padStart(2, "0");
   return data.galleryMeta?.[type]?.[number] || {};
 }
 
-function galleryCaptionData(type, index) {
+function galleryCaptionData(type, imageNumber) {
   const cfg = galleryConfig[type];
-  const number = String(index + 1).padStart(2, "0");
-  const meta = galleryMetaFor(type, index);
+  const number = String(imageNumber).padStart(2, "0");
+  const meta = galleryMetaFor(type, imageNumber);
 
   return {
     number,
@@ -639,18 +655,18 @@ function resizeAllGalleryItems() {
   });
 }
 
-function makeGalleryItem(src, index, type) {
+function makeGalleryItem(entry, index, type) {
   const cfg = galleryConfig[type];
-  const meta = galleryCaptionData(type, index);
+  const meta = galleryCaptionData(type, entry.number);
   const figure = document.createElement("figure");
   figure.className = "gallery-item";
   figure.tabIndex = 0;
   figure.setAttribute("role", "button");
-  figure.setAttribute("aria-label", `Open ${meta.title || `${cfg.label} image ${index + 1}`}`);
+  figure.setAttribute("aria-label", `Open ${meta.title || `${cfg.label} image ${meta.number}`}`);
 
   const img = document.createElement("img");
-  img.src = src;
-  img.alt = meta.title || `${cfg.label} image ${index + 1}`;
+  img.src = entry.src;
+  img.alt = meta.title || `${cfg.label} image ${meta.number}`;
   img.loading = "lazy";
   img.decoding = "async";
 
@@ -732,7 +748,7 @@ async function renderGallery(type) {
   galleryGrid.appendChild(loading);
 
   const cfg = galleryConfig[type];
-  activeGalleryImages = await discoverNumberedImages(
+  activeGalleryImages = await discoverNumberedGalleryImages(
     cfg.folder,
     GALLERY_DISCOVERY_LIMIT,
     cfg.prefix
@@ -849,13 +865,14 @@ function renderGalleryLightbox() {
   if (!activeGalleryImages.length || !galleryLightboxImage) return;
 
   lightboxIndex = (lightboxIndex + activeGalleryImages.length) % activeGalleryImages.length;
-  const meta = galleryCaptionData(activeGalleryType, lightboxIndex);
+  const entry = activeGalleryImages[lightboxIndex];
+  const meta = galleryCaptionData(activeGalleryType, entry.number);
   const cfg = galleryConfig[activeGalleryType];
 
   setLightboxZoom(false);
   galleryLightboxImage.onload = () => fitLightboxImage();
-  galleryLightboxImage.src = activeGalleryImages[lightboxIndex];
-  galleryLightboxImage.alt = meta.title || `${cfg.label} image ${lightboxIndex + 1}`;
+  galleryLightboxImage.src = entry.src;
+  galleryLightboxImage.alt = meta.title || `${cfg.label} image ${meta.number}`;
   if (galleryLightboxImage.complete) fitLightboxImage();
   galleryLightboxCategory.textContent = cfg.label;
   galleryLightboxCounter.textContent = `${lightboxIndex + 1} / ${activeGalleryImages.length}`;
