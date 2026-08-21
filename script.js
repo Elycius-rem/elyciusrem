@@ -605,6 +605,34 @@ const galleryConfig = {
   }
 };
 
+let galleryManifestPromise = null;
+
+async function loadGalleryManifest() {
+  if (location.protocol !== "http:" && location.protocol !== "https:") {
+    return null;
+  }
+
+  if (!galleryManifestPromise) {
+    galleryManifestPromise = fetch("gallery-manifest.json", { cache: "no-store" })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Gallery manifest returned HTTP ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((manifest) => {
+        if (!manifest || typeof manifest !== "object") return null;
+        return manifest;
+      })
+      .catch((error) => {
+        console.warn("Gallery manifest unavailable; using fallback discovery.", error);
+        return null;
+      });
+  }
+
+  return galleryManifestPromise;
+}
+
 let activeGalleryType = "photography";
 let activeGalleryImages = [];
 let visibleGalleryCount = GALLERY_INITIAL_COUNT;
@@ -748,11 +776,28 @@ async function renderGallery(type) {
   galleryGrid.appendChild(loading);
 
   const cfg = galleryConfig[type];
-  activeGalleryImages = await discoverNumberedGalleryImages(
-    cfg.folder,
-    GALLERY_DISCOVERY_LIMIT,
-    cfg.prefix
-  );
+  const manifest = await loadGalleryManifest();
+  const manifestEntries = manifest?.[type];
+
+  if (Array.isArray(manifestEntries)) {
+    activeGalleryImages = manifestEntries
+      .filter((entry) =>
+        entry &&
+        Number.isInteger(Number(entry.number)) &&
+        typeof entry.src === "string"
+      )
+      .map((entry) => ({
+        number: Number(entry.number),
+        src: entry.src
+      }));
+  } else {
+    // Compatibility fallback for file:// or a missing manifest.
+    activeGalleryImages = await discoverNumberedGalleryImages(
+      cfg.folder,
+      GALLERY_DISCOVERY_LIMIT,
+      cfg.prefix
+    );
+  }
 
   galleryGrid.classList.remove("is-loading");
   galleryGrid.replaceChildren();
