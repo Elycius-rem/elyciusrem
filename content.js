@@ -149,7 +149,7 @@ window.SITE_DATA = {
       description:
         "A collection of builds that arent worth an own card, but are still somewhat nice.",
       folder: "assets/minecraft/weiteres",
-      maxImages: 25
+      maxImages: 20
     },
   ],
 
