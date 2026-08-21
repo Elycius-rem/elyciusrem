@@ -588,7 +588,7 @@ const galleryLightboxNext = document.querySelector("#gallery-lightbox-next");
 const galleryLightboxClose = document.querySelector("#gallery-lightbox-close");
 const galleryLightboxZoom = document.querySelector("#gallery-lightbox-zoom");
 
-const GALLERY_DISCOVERY_LIMIT = 250;
+const GALLERY_DISCOVERY_LIMIT = 110;
 const GALLERY_INITIAL_COUNT = 18;
 const GALLERY_MORE_COUNT = 18;
 
